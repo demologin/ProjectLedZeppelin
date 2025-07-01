@@ -26,6 +26,7 @@ public class Winter {
                 parameters[i] = find(parameterTypes[i]);
             }
             component = constructor.newInstance(parameters);
+            beans.put(Class.class, component); //а в карту-то добавить и забыл
         }
         return (T) component;
     }
