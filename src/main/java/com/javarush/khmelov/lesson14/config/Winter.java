@@ -23,7 +23,7 @@ public class Winter {
             for (int i = 0; i < parameterTypes.length; i++) {
                 parameters[i] = find(parameterTypes[i]);
             }
-            beans.put(Class.class, constructor.newInstance(parameters));
+            beans.put(clazz, constructor.newInstance(parameters));
         }
         //noinspection unchecked
         return (T) beans.get(clazz);
