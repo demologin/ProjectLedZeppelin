@@ -1,4 +1,4 @@
-package com.javarush.khmelov.lesson13.config;
+package com.javarush.khmelov.lesson14.config;
 
 import lombok.SneakyThrows;
 
@@ -8,26 +8,24 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class Winter {
 
-    private Winter(){
+    private Winter() {
 
     }
 
     private static final Map<Class<?>, Object> beans = new ConcurrentHashMap<>();
 
-    @SuppressWarnings({"ReassignedVariable", "unchecked"})
     @SneakyThrows
     public static <T> T find(Class<T> clazz) {
-        Object component = beans.get(clazz);
-        if (component == null) {
+        if (!beans.containsKey(clazz)) {
             Constructor<?> constructor = clazz.getConstructors()[0];
             Class<?>[] parameterTypes = constructor.getParameterTypes();
             Object[] parameters = new Object[parameterTypes.length];
             for (int i = 0; i < parameterTypes.length; i++) {
                 parameters[i] = find(parameterTypes[i]);
             }
-            component = constructor.newInstance(parameters);
-            beans.put(Class.class, component); //а в карту-то добавить и забыл
+            beans.put(Class.class, constructor.newInstance(parameters));
         }
-        return (T) component;
+        //noinspection unchecked
+        return (T) beans.get(clazz);
     }
 }

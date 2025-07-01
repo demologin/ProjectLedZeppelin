@@ -1,8 +1,8 @@
-package com.javarush.khmelov.lesson13.controller;
+package com.javarush.khmelov.lesson14.controller;
 
-import com.javarush.khmelov.lesson13.config.Winter;
-import com.javarush.khmelov.lesson13.entity.User;
-import com.javarush.khmelov.lesson13.service.UserService;
+import com.javarush.khmelov.lesson14.config.Winter;
+import com.javarush.khmelov.lesson14.entity.User;
+import com.javarush.khmelov.lesson14.service.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
